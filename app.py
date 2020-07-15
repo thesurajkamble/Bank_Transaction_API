@@ -237,6 +237,11 @@ class PayLoan(Resource):
 
         return jsonify(generateReturnDictionary(200, "Loan Paid"))
 
+app.route("/test")
+def test():
+    msg = {
+        "msg": "shitt just works fine "
+    }
 
 api.add_resource(Register, '/register')
 api.add_resource(Add, '/add')
