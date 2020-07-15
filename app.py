@@ -242,6 +242,7 @@ def test():
     msg = {
         "msg": "shitt just works fine "
     }
+    return jsonify(msg)
 
 api.add_resource(Register, '/register')
 api.add_resource(Add, '/add')
