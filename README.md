@@ -9,7 +9,7 @@
   pymongo
   flask_restful
   
-## API Endpoints
+#### API Endpoints
     `/register`
      `/add`
      `transfer`
@@ -17,7 +17,7 @@
      `takeloan`
      `payloan`
      
-## Using the API
+#### Using the API
   `git clone https://github.com/surajkamblesk/Bank_Transaction_API.git`
   
   `pip install -r requirements.txt `
