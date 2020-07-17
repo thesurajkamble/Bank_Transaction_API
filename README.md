@@ -10,12 +10,12 @@
   flask_restful
   
 #### API Endpoints
-    `/register`
-     `/add`
-     `transfer`
-     `balance`
-     `takeloan`
-     `payloan`
+    ` /register`
+     ` /add`
+     ` /transfer `
+     ` /balance `
+     ` /takeloan `
+     ` /payloan `
      
 #### Using the API
   `git clone https://github.com/surajkamblesk/Bank_Transaction_API.git`
