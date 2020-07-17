@@ -8,12 +8,12 @@ balance takeloans and can also pay back loans.
 
 #### Requirements
 
-```  Python3
+     Python3
     MongoDB
     flask
-   Bcrypt
+    Bcrypt
     pymongo
-   flask_restful  ```
+    flask_restful
   
 #### API Endpoints
      /register
