@@ -1,4 +1,4 @@
-##BANK TRANSACTION API USING FLASK AND MONGODB
+## BANK TRANSACTION API USING FLASK AND MONGODB
 
 BANK API is an simple API built while learning about flask and API Development 
 by using flask and mongoDB. the user can register , 
@@ -28,7 +28,7 @@ balance takeloans and can also pay back loans.
   
   `pip install -r requirements.txt `
   
-# REFERENCES
+#### REFERENCES
    
   
   
