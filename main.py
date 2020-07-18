@@ -237,7 +237,7 @@ class PayLoan(Resource):
 
         return jsonify(generateReturnDictionary(200, "Loan Paid"))
 
-app.route("/test")
+app.route("/")
 def test():
     msg = {
         "msg": "shitt just works fine "
@@ -252,5 +252,5 @@ api.add_resource(TakeLoan, '/takeloan')
 api.add_resource(PayLoan, '/payloan')
 
 
-# if __name__=="__main__":
-#     app.run(host='0.0.0.0')
+if __name__=="__main__":
+    app.run(host='0.0.0.0')
