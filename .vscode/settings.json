@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "/home/suraj/Desktop/MyProjects/flask-bank-api/bank-api/bin/python3.6",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}
