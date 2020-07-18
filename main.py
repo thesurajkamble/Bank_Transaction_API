@@ -239,11 +239,9 @@ class PayLoan(Resource):
 
 app.route("/")
 def test():
-    msg = {
-        "msg": "shitt just works fine "
-    }
-    return jsonify(msg)
+    return "shitt just works fine!!!!!!"
 
+    
 api.add_resource(Register, '/register')
 api.add_resource(Add, '/add')
 api.add_resource(Transfer, '/transfer')
@@ -253,4 +251,4 @@ api.add_resource(PayLoan, '/payloan')
 
 
 if __name__=="__main__":
-    app.run(host='0.0.0.0')
+    app.run()
