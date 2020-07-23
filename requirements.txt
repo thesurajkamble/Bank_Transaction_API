@@ -2,4 +2,8 @@ flask
 flask_restful
 pymongo
 bcrypt
+<<<<<<< HEAD
 gunicorn 
+=======
+gunicorn 
+>>>>>>> 4943ca1449d7992c71579b6203f019555979d8a2
