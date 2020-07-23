@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BANK APP</string>
+    <string name="usernameReg">Username</string>
+    <string name="emailReg">Email</string>
+    <string name="passwordReg">Password</string>
+    <string name="sign_upReg">Sign up</string>
+    <string name="sign_inLog">Sign in</string>
+    <string name="signin_redirect">Already a member? Sign in!</string>
+    <string name="forgot_password">Forgot password?</string>
+
+
+    <string name="signup_redirect">Don\'t have an account? Register here!</string>
+    // patient list activity strings goes here
+    <string name="patient_name">Patient Name</string>
+    <string name="patient_number">Patient number</string>
+    <string name="patient_last_appointment">10/2/1018</string>
+
+    <string name="add_patients">Add Patients</string>
+    <string name="Appointments">Appointments</string>
+    <string name="patient_list">Patients List</string>
+
+
+</resources>
