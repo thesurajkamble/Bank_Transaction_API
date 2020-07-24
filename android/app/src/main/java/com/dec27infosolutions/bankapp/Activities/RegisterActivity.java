@@ -2,6 +2,7 @@ package com.dec27infosolutions.bankapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import com.dec27infosolutions.bankapp.Models.Register;
 import com.dec27infosolutions.bankapp.NetworkUtils.InterfaceAPI;
 import com.dec27infosolutions.bankapp.R;
 import com.dec27infosolutions.bankapp.Utils.util;
-import com.google.android.material.snackbar.Snackbar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,31 +35,43 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         findViews();
-        util util = new util(username, pass, confirm_pass, emailreg);
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RegisterNewUser();
+            }
+        });
+    }
 
-        if (util.CheckForEmptyInput()) {
-            setInputEmptyError();
+    /***
+     * Oncreate ends here
+     */
+
+    private void RegisterNewUser() {
+
+        util util = new util(username, pass, confirm_pass, emailreg);
+        if (!util.CheckForEmptyInput()) {
+            Toast.makeText(getApplicationContext(), "username password required", Toast.LENGTH_LONG).show();
         }
 
         if (!util.checkPasswords()) {
-            Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, "Password Mismatch!!", Snackbar.LENGTH_SHORT);
-            snackbar.show();
+            Toast.makeText(getApplicationContext(), "password mismatch", Toast.LENGTH_LONG).show();
         }
 
         try {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://jsonplaceholder.typicode.com/")
+                    .baseUrl("https://flask-bank-api-1.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             interfaceAPI = retrofit.create(InterfaceAPI.class);
-            RegisterNewUser();
+            makeNetworkCall();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
-    private void RegisterNewUser() {
+    private void makeNetworkCall() {
+
         String str_username, str_password, str_email;
         str_username = username.getText().toString();
         str_password = pass.getText().toString();
@@ -88,8 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Exception " + t.getMessage(), Toast.LENGTH_SHORT)
                         .show();
             }
-
-
         });
     }
 
@@ -97,23 +107,14 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
         startActivity(intent);
     }
-
-
     private void findViews() {
         username = findViewById(R.id.atvUsernameReg);
         emailreg = findViewById(R.id.atvEmailLog);
         pass = findViewById(R.id.atvPasswordLog);
         confirm_pass = findViewById(R.id.atvPasswordConfirm);
+        btnSignup = findViewById(R.id.btnSignUp);
+        tvSignin = findViewById(R.id.tvForgotPass);
 
 
     }
-
-    private void setInputEmptyError() {
-        username.setError("required");
-        pass.setError("required");
-        confirm_pass.setError("required");
-        emailreg.setError("required");
-    }
-
-
 }
