@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         pass = findViewById(R.id.atvPasswordLog);
         confirm_pass = findViewById(R.id.atvPasswordConfirm);
 
+
         
     }
 }

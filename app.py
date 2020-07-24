@@ -23,7 +23,9 @@ class Register(Resource):
 
         #Get the data
         username = postedData["username"]
-        password = postedData["password"] #"123xyz"
+        password = postedData["password"] 
+        email = postedData["email"]
+
 
         if UserExist(username):
             retJson = {
@@ -38,6 +40,7 @@ class Register(Resource):
         users.insert({
             "Username": username,
             "Password": hashed_pw,
+            "email":email,
             "Own":0,
             "Debt":0
         })
