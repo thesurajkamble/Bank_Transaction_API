@@ -9,12 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.dec27infosolutions.bankapp.Models.Register;
 import com.dec27infosolutions.bankapp.NetworkUtils.InterfaceAPI;
 import com.dec27infosolutions.bankapp.R;
-import com.dec27infosolutions.bankapp.Utils.util;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,18 +25,38 @@ public class RegisterActivity extends AppCompatActivity {
     AutoCompleteTextView username, emailreg, pass, confirm_pass;
     Button btnSignup;
     TextView tvSignin;
-    CoordinatorLayout coordinatorLayout;
+    //    CoordinatorLayout coordinatorLayout;
     private InterfaceAPI interfaceAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        findViews();
+
+        username = findViewById(R.id.atvUsernameReg);
+        emailreg = findViewById(R.id.atvEmailLog);
+        pass = findViewById(R.id.atvPasswordLog);
+        confirm_pass = findViewById(R.id.atvPasswordConfirm);
+        btnSignup = findViewById(R.id.btnSignUp);
+        tvSignin = findViewById(R.id.tvForgotPass);
+
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RegisterNewUser();
+                Toast.makeText(getApplicationContext(), "on click", Toast.LENGTH_LONG).show();
+                try {
+                    Toast.makeText(getApplicationContext(), "retrofit ", Toast.LENGTH_LONG).show();
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("https://flask-bank-api-1.herokuapp.com/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    interfaceAPI = retrofit.create(InterfaceAPI.class);
+                    Toast.makeText(getApplicationContext(), "before call", Toast.LENGTH_LONG).show();
+                    makeNetworkCall();
+                    Toast.makeText(getApplicationContext(), "after call", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -47,31 +65,22 @@ public class RegisterActivity extends AppCompatActivity {
      * Oncreate ends here
      */
 
-    private void RegisterNewUser() {
+//    private void RegisterNewUser() {
+//
+//        util util = new util(username, pass, confirm_pass, emailreg);
+//        if (!util.CheckForEmptyInput()) {
+//            Toast.makeText(getApplicationContext(), "username password required", Toast.LENGTH_LONG).show();
+//        }
+//
+//        if (!util.checkPasswords()) {
+//            Toast.makeText(getApplicationContext(), "password mismatch", Toast.LENGTH_LONG).show();
+//        }
 
-        util util = new util(username, pass, confirm_pass, emailreg);
-        if (!util.CheckForEmptyInput()) {
-            Toast.makeText(getApplicationContext(), "username password required", Toast.LENGTH_LONG).show();
-        }
 
-        if (!util.checkPasswords()) {
-            Toast.makeText(getApplicationContext(), "password mismatch", Toast.LENGTH_LONG).show();
-        }
-
-        try {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://flask-bank-api-1.herokuapp.com/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            interfaceAPI = retrofit.create(InterfaceAPI.class);
-            makeNetworkCall();
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-        }
-    }
+    //}
 
     private void makeNetworkCall() {
-
+        Toast.makeText(getApplicationContext(), "in make n/w call", Toast.LENGTH_LONG).show();
         String str_username, str_password, str_email;
         str_username = username.getText().toString();
         str_password = pass.getText().toString();
@@ -95,6 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .show();
                 }
             }
+
             @Override
             public void onFailure(Call<Register> call, Throwable t) {
                 Toast.makeText(RegisterActivity.this, "Exception " + t.getMessage(), Toast.LENGTH_SHORT)
@@ -107,13 +117,9 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
         startActivity(intent);
     }
+
     private void findViews() {
-        username = findViewById(R.id.atvUsernameReg);
-        emailreg = findViewById(R.id.atvEmailLog);
-        pass = findViewById(R.id.atvPasswordLog);
-        confirm_pass = findViewById(R.id.atvPasswordConfirm);
-        btnSignup = findViewById(R.id.btnSignUp);
-        tvSignin = findViewById(R.id.tvForgotPass);
+
 
 
     }
