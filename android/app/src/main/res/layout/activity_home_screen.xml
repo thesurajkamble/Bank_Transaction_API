@@ -60,6 +60,7 @@
         android:textColor="#ffff"
         android:text="30000"
         android:textSize="20sp" />
+        
 
     <LinearLayout
         android:layout_width="320dp"
