@@ -23,17 +23,22 @@
         app:brandLogo="@drawable/brandlogo"
 
 
-        app:cardNameTextColor="#cccccc"
+        app:cardNameTextColor="#666666
+"
 
         app:cardNumberFormat="masked_all_but_last_four"
-        app:cardNumberTextColor="#cccccc"
+        app:cardNumberTextColor="#666666
+"
         app:expiryDate="02/22"
-        app:expiryDateTextColor="#cccccc"
-        app:hintTextColor="#cccccc"
+        app:expiryDateTextColor="#666666
+"
+        app:hintTextColor="#666666
+"
 
         app:putChip="true"
         app:type="auto"
-        app:validTillTextColor="#cccccc" />
+        app:validTillTextColor="#666666
+" />
 
     <TextView
         android:layout_width="match_parent"
